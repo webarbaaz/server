@@ -1,3 +1,5 @@
-/node_moduls
 
+# dependencies
+/node_modules
+# local env files
 .env
