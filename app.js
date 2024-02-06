@@ -10,6 +10,8 @@ const connect = require("./config/db");
 const authMiddleware = require("./middleware/authMiddleware");
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
+const paymentRoutes = require("./routes/paymentRoutes");
+const productRoutes = require("./routes/productRoutes");
 const createError = require("./utils/createError");
 const errorHandler = require("./utils/errorHandler");
 
@@ -32,7 +34,10 @@ app.get("/api", (req, res) => {
 
 // routes
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/products", authMiddleware, productRoutes);
 app.use("/api/v1/user", authMiddleware, userRoutes);
+app.use("/api/v1/payment", paymentRoutes);
+// app.use("/api/v1/cart", authMiddleware,cartRoutes);
 
 app.get("*", (req, res, next) => {
   next(createError(404, "route does not found"));

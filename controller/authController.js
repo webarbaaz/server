@@ -8,7 +8,7 @@ const register = asyncHandler(async (req, res) => {
 
   // Check if required fields are provided
   if ( !firstName || !lastName || !email || !password || !phone ) {
-    return res.status(400).json({ msg: "Please provide all required fields." });
+    return res.status(400).json({ msg: "Please provide all the required fields." });
   }
 
   // Check if a user with the provided email already exists
@@ -69,7 +69,7 @@ const login = asyncHandler(async (req, res) => {
 
     // Generate JWT token
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1h", // Token expiration time (e.g., 1 hour)
+      expiresIn: "72h", // Token expiration time (e.g., 1 hour)
     });
 
     // Respond with token and user information

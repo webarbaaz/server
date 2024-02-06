@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-
+//TODO need to improve the error handling responses
 function authMiddleware(req, res, next) {
     const token = req.header('x-auth-token');
 
